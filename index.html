@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>img</title>
+    <style>
+        .intro {
+            text-align: center
+        }
+
+        .intro h1 {
+            font-size: 60px;
+            font-weight: 900;
+            transition: .4s;
+            margin-bottom: 25px
+        }
+
+        .intro h1 #happy {
+            display: none;
+            color: #27AE60;
+            transition: .4s;
+            animation: fade .4s linear;
+        }
+
+        .intro h1 #sad {
+            color: #870000;
+            transition: .4s;
+            animation: fade 1s linear;
+        }
+
+
+        @keyframes fade {
+            0% {
+                opacity: 0
+            }
+
+            100% {
+                opacity: 1
+            }
+        }
+
+        .circle {
+            height: 200px;
+            width: 200px;
+            background: yellow;
+            border-radius: 50%;
+            box-shadow: 1px 2px 40px rgba(0, 0, 0, .5) inset;
+            position: relative;
+        }
+
+        .shadow {
+            width: 100%;
+            height: 100%;
+            box-shadow: 2px 4px 22px rgba(0, 0, 0, .5);
+            border-radius: 50%
+        }
+
+        .eye {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background: #000;
+            top: 25%;
+            border-radius: 50%;
+            box-shadow: 1px 2px 10px rgba(0, 0, 0, .5)
+        }
+
+        /* .eye-inner{
+    width:50%;
+    height: 50%;
+    margin:8px auto;
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px 5px rgba(0, 0, 0, .3)
+} */
+
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .eye.eye-left {
+            left: 23%
+        }
+
+        .eye.eye-right {
+            right: 23%
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 20%;
+            left: 23%;
+            width: 90px;
+            height: 45px;
+            border-radius: 150px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            border: 10px solid #000;
+            border-top: none;
+            transform: rotateX(180deg);
+            backface-visibility: visible;
+            transition: .4s;
+        }
+
+        .circle:hover .mouth {
+            bottom: 12%;
+            left: 16%;
+            width: 120px;
+            height: 60px;
+            border-radius: 150px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            transform: rotate(0deg);
+
+        }
+
+        .des {
+            background: #333;
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            transform: scaleY(0);
+            transform-origin: 0 0;
+            transition: .4s;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+
+        .des.open {
+            transform: scaleY(1)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro">
+        <h1>
+
+            <span id="happy">I'm Happy</span>
+            <span id="sad">I'm Sad</span>
+        </h1>
+    </div>
+    <div class="container">
+        <div class="circle">
+            <div class="shadow">
+                <div class="eye eye-left">
+                    <div class="eye-inner"></div>
+                </div>
+                <div class="eye eye-right">
+                    <div class="eye-inner"></div>
+                </div>
+                <div class="mouth"></div>
+            </div>
+        </div>
+
+        <div class="des">
+            <h3>Happy Learning</h3>
+            <h4>Farhan</h4>
+        </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.circle').hover(function () {
+                $('#happy, #sad').fadeToggle(300).finish();
+                $('.des').toggleClass('open')
+            });
+        });
+    </script>
+</body>
+
+</html>
